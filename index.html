@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人网站</title>
+  <style>
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f9f9f9, #e6f7ff);
+      padding-top: 60px; /* 为固定导航栏留出空间 */
+    }
+    
+    /* 导航栏样式 */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #005f8d;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: #b3e0ff;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+    header h1 {
+      margin: 0;
+    }
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 3rem;
+      padding-top: 2rem; /* 为锚点导航留出空间 */
+    }
+    h2 {
+      color: #0077b6;
+      border-bottom: 2px solid #0077b6;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .game-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .game-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+    .game-card a {
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0077b6;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      nav {
+        padding: 1rem;
+      }
+      
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#games">小游戏</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>欢迎来到我的个人网站</h1>
+    <p>这里有我的简介和一些小游戏 🎮</p>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>关于我</h2>
+      <p>大家好，我是LJH。这是我的个人网站，我喜欢编程、音乐和游戏！</p>
+      <p>通过这个网站，我想分享一些我开发的小游戏和我的学习心得。希望你能在这里找到乐趣，也欢迎提出宝贵的意见和建议。</p>
+    </section>
+
+    <section id="games">
+      <h2>小游戏入口</h2>
+      <div class="game-links">
+        <div class="game-card">
+          <p>贪吃蛇</p>
+          <a href="games/snake.html" target="_blank">进入游戏</a>
+        </div>
+        <div class="game-card">
+          <p>俄罗斯方块</p>
+          <a href="games/tetris.html" target="_blank">进入游戏</a>
+        </div>
+        <div class="game-card">
+          <p>打地鼠</p>
+          <a href="games/whackamole.html" target="_blank">进入游戏</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 我的个人网站 | 设计 by Me</p>
+  </footer>
+</body>
+</html>
