@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>打地鼠</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f0f8ff;
+      font-family: "Microsoft YaHei", sans-serif;
+      margin: 0;
+      height: 100vh;
+    }
+    h1 {
+      color: #0077b6;
+    }
+    #game {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      grid-template-rows: repeat(3, 120px);
+      gap: 10px;
+      margin: 20px;
+    }
+    .hole {
+      width: 120px;
+      height: 120px;
+      background: #90e0ef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .mole {
+      width: 60px;
+      height: 60px;
+      background: #ff595e;
+      border-radius: 50%;
+      display: none;
+      position: absolute;
+      bottom: 20px;
+    }
+    #score, #time {
+      margin: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0077b6;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #0077b6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f87;
+    }
+  </style>
+</head>
+<body>
+  <h1>打地鼠 🐹</h1>
+  <div id="score">得分: 0</div>
+  <div id="time">时间: 30s</div>
+  <div id="game">
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+    <div class="hole"><div class="mole"></div></div>
+  </div>
+  <button onclick="startGame()">开始游戏</button>
+
+  <script>
+    let score = 0;
+    let time = 30;
+    let timer;
+    let moleTimer;
+
+    const scoreDisplay = document.getElementById("score");
+    const timeDisplay = document.getElementById("time");
+    const moles = document.querySelectorAll(".mole");
+
+    function randomMole() {
+      moles.forEach(mole => mole.style.display = "none");
+      const index = Math.floor(Math.random() * moles.length);
+      const mole = moles[index];
+      mole.style.display = "block";
+
+      mole.onclick = () => {
+        score++;
+        scoreDisplay.textContent = "得分: " + score;
+        mole.style.display = "none";
+      };
+    }
+
+    function startGame() {
+      score = 0;
+      time = 30;
+      scoreDisplay.textContent = "得分: " + score;
+      timeDisplay.textContent = "时间: " + time + "s";
+
+      clearInterval(timer);
+      clearInterval(moleTimer);
+
+      timer = setInterval(() => {
+        time--;
+        timeDisplay.textContent = "时间: " + time + "s";
+        if (time <= 0) {
+          clearInterval(timer);
+          clearInterval(moleTimer);
+          alert("游戏结束！你的得分是：" + score);
+        }
+      }, 1000);
+
+      moleTimer = setInterval(randomMole, 800);
+    }
+  </script>
+</body>
+</html>
